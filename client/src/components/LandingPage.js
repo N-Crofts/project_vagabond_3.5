@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const StyledBackground = styled.div`
   background-image: url("http://klxpress.com.my/images/rail.jpg");
+  filter: blur(2px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,12 +18,14 @@ const StyledBackground = styled.div`
 
 const StyledMenu = styled.div`
   background-color: rgba(0,0,0, 0.6);
+  border: 0.5px solid #f1f1f1;
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 2;
   top: 50%;
   left: 50%;
   width: 100%;
+  /* width: 80%; */
   padding: 20px;
   padding-bottom: 30px;
   text-align: center;
