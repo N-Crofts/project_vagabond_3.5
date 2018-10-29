@@ -118,11 +118,12 @@ export default class SingleCity extends Component {
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
+            // const postNumber = i + 1
             return (
                 <div key={i}>
                     <h1>{post.title}</h1>
                     <p>{post.body}</p>
-                    <button onClick={()=>this.handleDelete(i)}>DOGEleted</button>
+                    <button onClick={()=>this.handleDelete(post.id)}>DOGEleted</button>
                 </div>
             )
         })
