@@ -35,6 +35,10 @@ export default class SinglePost extends Component {
       // post.push(response.data)
       this.setState({post})
     }
+    goBack = () => {
+      const cityId = this.props.match.params.cityId
+      window.location.replace(`/cities/${cityId}`)
+    }
 
 
 
@@ -60,7 +64,7 @@ export default class SinglePost extends Component {
           value={this.state.post.body}
           onChange={this.handleChange}
         />
-        <input type='submit' value='Edit Post'/>
+        <input type='submit' value='Edit Post' onClick={()=>{this.goBack()}}/>
         </form>
       </div>
     )
