@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledBackground = styled.div`
-  /* background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg"); */
-  filter: blur(2px);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  max-width: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  overflow: hidden;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
 `
 const StyledPost = styled.div`
   background-color: rgba(0,0,0, 0.4);
@@ -35,7 +38,7 @@ const StyledPost = styled.div`
 `
 
 const StyledNav = styled.nav`
-position: absolute;
+position: fixed;
 width: 100%;
 list-style-type: none;
 margin: 0;
@@ -108,10 +111,7 @@ export default class SingleCity extends Component {
                 </StyledBackground>
             <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
-                <StyledLink to=''>Add New Post</StyledLink>
-                <li>{city.name}</li>
-                
-               
+                <li>{city.name}</li>               
             </StyledNav>
             
            

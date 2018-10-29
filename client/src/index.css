@@ -1,22 +1,8 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
 
 body,html{
   margin:0;
   padding:0;
-  background-color: rgb(161, 167, 192);
+  background-color: black;
 }
 
 .wrapper {
@@ -24,18 +10,18 @@ body,html{
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 2px;
-}
+} 
 
-.section {
+/* .section {
   position: relative;
   height: 100vh;  
   display: flex;
   align-items: center;
   justify-content: center;
   color: black;
-}
+} */
 
-.parallax::after {
+/* .parallax::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -45,40 +31,51 @@ body,html{
   transform: translateZ(-1px) scale(1.5);
   background-size: 100%;
   z-index: -1;
-}
+} */
 
-.static {
-  background: rgb(161, 167, 192);
-}
-
-.bg1::after {
+/* .static {
   background-image: url('https://images.unsplash.com/photo-1517449905587-f80695d63356?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=36dd87f58a5389c9820df1b6420e0f48&auto=format&fit=crop&w=1049&q=80');
-}
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */ 
 
-.bg2::after {
+
+/* .bg1::after {
+  background-image: url("http://klxpress.com.my/images/rail.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+
+
+} */
+
+
+/* .bg2::after {
   background-image: url('https://images.unsplash.com/photo-1523411518-b0e44109a06b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b871ac13c2aa23571b82e7dbec98f991&auto=format&fit=crop&w=1051&q=80');
-}
+} */
 
-.exploreBanner {
+/* .exploreBanner {
   font-size: 5em;
   letter-spacing: 1vw;
-}
+} */
 
-.contactFooter {
+/* .contactFooter {
   font-size: 3em;
   letter-spacing: 1vw;
   color: rgb(56, 55, 55);
-}
+} */
 
-.cityList {
+/* .cityList {
   font-size: 35px;
-}
+} */
 
-.cityAdd {
+/* .cityAdd {
   position: relative;
   height: 100vh;  
   display: flex;
   align-items: center;
   justify-content: center;
   color: black;
-}
+}  */
