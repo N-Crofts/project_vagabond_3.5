@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledBackground = styled.div`
-  background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg");
+  /* background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg"); */
   filter: blur(2px);
   background-position: center;
   background-repeat: no-repeat;
@@ -101,16 +101,16 @@ export default class SingleCity extends Component {
         })
 
 
-
-
         return (
             <div>
                 <StyledBackground>
+                    <img src={city.photo_url} />
                 </StyledBackground>
             <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
                 <StyledLink to=''>Add New Post</StyledLink>
                 <li>{city.name}</li>
+                
                
             </StyledNav>
             
