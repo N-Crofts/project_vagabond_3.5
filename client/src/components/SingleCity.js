@@ -90,13 +90,19 @@ export default class SingleCity extends Component {
 
     fetchPosts = async (id) => {
         const response = await axios.get(`/api/cities/${id}/posts`)
-        return response.data
+        return response.data.reverse()
     }
 
     handleChange = (event) => {
         const newPost = {...this.state.newPost}
         newPost[event.target.name] = event.target.value
         this.setState({newPost})
+    }
+
+    handleUpdateChange = (event, i) => {
+        const posts = [...this.state.posts]
+        posts[i][event.target.name] = event.target.value
+        this.setState({posts})
     }
 
     handleDelete = async (postId) => {
@@ -115,14 +121,31 @@ export default class SingleCity extends Component {
         this.setState({posts})
     }
 
+    handleUpdate = async (i) => {
+        const cityId = this.props.match.params.id
+        const updatedPost = this.state.posts[i]
+        await axios.put(`/api/cities/${cityId}/posts/${updatedPost.id}`, updatedPost)
+    }
+
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
             // const postNumber = i + 1
             return (
                 <div key={i}>
-                    <h1>{post.title}</h1>
-                    <p>{post.body}</p>
+                    
+                    <input 
+                        type='text' 
+                        name='title'
+                        value={post.title}
+                        onChange={(event)=>this.handleUpdateChange(event, i)} 
+                        onBlur={()=>this.handleUpdate(i)}/>
+                    <textarea 
+                        name='body'
+                        value={post.body}
+                        onChange={(event)=>this.handleUpdateChange(event, i)}
+                        onBlur={()=>this.handleUpdate(i)}/>
+                    
                     <button onClick={()=>this.handleDelete(post.id)}>DOGEleted</button>
                 </div>
             )
