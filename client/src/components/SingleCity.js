@@ -93,10 +93,10 @@ export default class SingleCity extends Component {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
             return (
-                <StyledPost key={i}>
-                    <h1>{post.name}</h1>
+                <div key={i}>
+                    <h1>{post.title}</h1>
                     <p>{post.body}</p>
-                </StyledPost>
+                </div>
             )
         })
 
