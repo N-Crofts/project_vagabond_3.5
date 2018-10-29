@@ -68,7 +68,11 @@ const StyledLink = styled(Link)`
 export default class SingleCity extends Component {
     state = {
         city: {},
-        posts: []
+        posts: [],
+        newPost: {
+            title: '',
+            body: ''
+        }
     }
 
     async componentDidMount() {
@@ -89,6 +93,21 @@ export default class SingleCity extends Component {
         return response.data
     }
 
+    handleChange = (event) => {
+        const newPost = {...this.state.newPost}
+        newPost[event.target.name] = event.target.value
+        this.setState({newPost})
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const cityId = this.props.match.params.id
+        const response = await axios.post(`/api/cities/${cityId}/posts`, this.state.newPost)
+        const posts = [...this.state.posts]
+        posts.push(response.data)
+        this.setState({posts})
+    }
+
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
@@ -96,6 +115,7 @@ export default class SingleCity extends Component {
                 <div key={i}>
                     <h1>{post.title}</h1>
                     <p>{post.body}</p>
+                
                 </div>
             )
         })
@@ -115,7 +135,24 @@ export default class SingleCity extends Component {
             </StyledNav>
             
            
-            {postContent}
+            <div>{postContent}</div>
+            <form onSubmit={this.handleSubmit}>
+                <input 
+                    type='text'
+                    name='title'
+                    placeholder='Enter title of post'
+                    value={this.state.newPost.title}
+                    onChange={this.handleChange}
+                />
+                <input 
+                    type='text'
+                    name='body'
+                    placeholder='Enter body of post'
+                    value={this.state.newPost.body}
+                    onChange={this.handleChange}
+                />
+                <input type='submit' value='add new post'/>
+            </form>
             
             </div>
         )
