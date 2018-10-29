@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -11,4 +11,74 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+body,html{
+  margin:0;
+  padding:0;
+  background-color: rgb(161, 167, 192);
+}
+
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+.section {
+  position: relative;
+  height: 100vh;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.static {
+  background: rgb(161, 167, 192);
+}
+
+.bg1::after {
+  background-image: url('https://images.unsplash.com/photo-1517449905587-f80695d63356?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=36dd87f58a5389c9820df1b6420e0f48&auto=format&fit=crop&w=1049&q=80');
+}
+
+.bg2::after {
+  background-image: url('https://images.unsplash.com/photo-1523411518-b0e44109a06b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b871ac13c2aa23571b82e7dbec98f991&auto=format&fit=crop&w=1051&q=80');
+}
+
+.exploreBanner {
+  font-size: 5em;
+  letter-spacing: 1vw;
+}
+
+.contactFooter {
+  font-size: 3em;
+  letter-spacing: 1vw;
+  color: rgb(56, 55, 55);
+}
+
+.cityList {
+  font-size: 35px;
+}
+
+.cityAdd {
+  position: relative;
+  height: 100vh;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
 }

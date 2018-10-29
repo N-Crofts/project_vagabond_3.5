@@ -42,28 +42,41 @@ export default class CityContent extends Component {
             return (
                 <div key={i}>
                     <Link to={`/cities/${city.id}`} > {city.name}</Link>
-                    <br></br>
-                    <button onClick={() => this.handleDelete(city.id)}>delete</button>
+                    <button onClick={() => this.handleDelete(city.id)}>X</button>
                 </div>
             )
         })
 
         return (
             <div>
-                <ul>
-                    {citiesContent}
-                </ul>
-                <div>Add A City</div>
-                <form onSubmit={this.handleSubmit}>
-                    <input class="enterHere"
-                        type='text'
-                        name='name'
-                        placeholder='enter city name'
-                        value={this.state.newCity.name}
-                        onChange={this.handleChange}
-                    />
-                    <form type='submit' value='add city'></form>
-                </form>
+                <main class="wrapper">
+                    <section class="section parallax bg1">
+                        <div class="exploreBanner">
+                            EXPLORE THESE CITIES
+                        </div>
+                    </section>
+                    <section class="section static">
+                        <ul class="cityList">
+                            {citiesContent}
+                        </ul>
+                    <div class="cityAdd">
+                        <form onSubmit={this.handleSubmit}>
+                            <input class="enterHere"
+                                type='text'
+                                name='name'
+                                placeholder='add a city'
+                                value={this.state.newCity.name}
+                                onChange={this.handleChange}
+                            />
+                            <input type='submit' value='add city'></input>
+                        </form>
+                        </div>
+                        </section>
+
+                    <section class="section parallax bg2">
+                        <div class="contactFooter">CONTACT</div>
+                    </section>
+                </main>
             </div>
         )
     }
