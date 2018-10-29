@@ -3,6 +3,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+
+
+const StyledButton = styled.button`
+    display: inline-block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 2.5vw;
+    font-weight: bold;
+    border-right: 1px solid #bbb;
+    
+    cursor: pointer;
+
+`
 const StyledBackground = styled.div`
   background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg");
   filter: blur(2px);
@@ -71,6 +84,19 @@ export default class SingleCity extends Component {
         posts: []
     }
 
+    handleChange = (event, i) => {
+        const posts = [...this.state.posts]
+        posts[i][event.target.name]=event.target.value
+        this.setState({posts})
+    }
+
+    handleNew = async () => {
+        // Fetching ID of city through props
+        const cityId = this.props.match.params.id
+        const newPost = await axios.post(`/api/cities/${cityId}/posts`)
+        await this.fetchOneCity()
+    }
+
     async componentDidMount() {
         const cityId = this.props.match.params.id
         const city = await this.fetchOneCity(cityId)
@@ -93,10 +119,29 @@ export default class SingleCity extends Component {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
             return (
+
+
+
+                
+                <div key={i}>
+                
+                    <h1>{post.title}</h1>
+                    <p>{post.body}</p>
+
+                    {/* <input type='text' name='title' value={post.title} placeholder={post.title}
+                    onChange={(event) => this.handleChange(event,i)} />
+
+                    <input type='text' name='body' value={post.body} placeholder={post.body}
+                    onChange={(event)=>this.handleChange(event, i)} /> */}
+                </div>
+                
+        
+
                 <StyledPost key={i}>
                     <h1>{post.name}</h1>
                     <p>{post.body}</p>
                 </StyledPost>
+
             )
         })
 
@@ -107,6 +152,21 @@ export default class SingleCity extends Component {
             <div>
                 <StyledBackground>
                 </StyledBackground>
+
+                <StyledNav>
+                <StyledLink to='/'>VAGABOND</StyledLink>
+                <StyledButton to=''>Add New Post</StyledButton>
+                <li>{city.name}</li>
+               
+            </StyledNav>
+                <StyledPost>
+                    {postContent}
+                    <br/>
+                </StyledPost>
+
+            
+           
+
             <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
                 <StyledLink to=''>Add New Post</StyledLink>
@@ -116,6 +176,7 @@ export default class SingleCity extends Component {
             
            
             {postContent}
+
             
             </div>
         )
