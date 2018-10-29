@@ -99,6 +99,13 @@ export default class SingleCity extends Component {
         this.setState({newPost})
     }
 
+    handleDelete = async (postId) => {
+        const cityId = this.state.city.id
+        const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
+        const filteredPosts = this.state.posts.filter(post => postId !== post.id)
+        this.setState({ posts: filteredPosts })
+    }
+
     handleSubmit = async (event) => {
         event.preventDefault()
         const cityId = this.props.match.params.id
@@ -115,7 +122,7 @@ export default class SingleCity extends Component {
                 <div key={i}>
                     <h1>{post.title}</h1>
                     <p>{post.body}</p>
-                
+                    <button onClick={()=>this.handleDelete(i)}>DOGEleted</button>
                 </div>
             )
         })
