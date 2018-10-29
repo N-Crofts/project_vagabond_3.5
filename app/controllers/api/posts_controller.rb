@@ -7,7 +7,7 @@ class Api::PostsController < ApplicationController
   
     def show
       @post = Post.find(params[:id])
-      @city = @post.artist
+      @city = @post.city
       render json: @post
     end
   
