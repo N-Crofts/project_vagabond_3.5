@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
+
 const StyledButton = styled.button`
     display: inline-block;
     padding: 15px 20px;
@@ -120,6 +121,7 @@ export default class SingleCity extends Component {
             return (
 
 
+
                 
                 <div key={i}>
                 
@@ -134,6 +136,12 @@ export default class SingleCity extends Component {
                 </div>
                 
         
+
+                <StyledPost key={i}>
+                    <h1>{post.name}</h1>
+                    <p>{post.body}</p>
+                </StyledPost>
+
             )
         })
 
@@ -144,6 +152,7 @@ export default class SingleCity extends Component {
             <div>
                 <StyledBackground>
                 </StyledBackground>
+
                 <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
                 <StyledButton to=''>Add New Post</StyledButton>
@@ -157,7 +166,17 @@ export default class SingleCity extends Component {
 
             
            
-        
+
+            <StyledNav>
+                <StyledLink to='/'>VAGABOND</StyledLink>
+                <StyledLink to=''>Add New Post</StyledLink>
+                <li>{city.name}</li>
+               
+            </StyledNav>
+            
+           
+            {postContent}
+
             
             </div>
         )
