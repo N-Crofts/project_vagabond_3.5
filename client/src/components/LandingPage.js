@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -31,7 +32,6 @@ const StyledMenu = styled.div`
   font-size: 4vw;
   color: white;
   font-weight: bold;
-
 `
 
 
