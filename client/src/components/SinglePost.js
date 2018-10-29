@@ -18,7 +18,7 @@ export default class SinglePost extends Component {
     fetchPost = async (id) => {
         const cityId = this.props.match.params.cityId
         const response = await axios.get(`/api/cities/${cityId}/posts/${id}`)
-        return response.data.reverse()
+        return response.data
     }
 
 
