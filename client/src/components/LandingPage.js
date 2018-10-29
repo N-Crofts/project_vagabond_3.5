@@ -25,7 +25,6 @@ const StyledMenu = styled.div`
   top: 50%;
   left: 50%;
   width: 100%;
-  /* width: 80%; */
   padding: 20px;
   padding-bottom: 30px;
   text-align: center;
