@@ -11,7 +11,7 @@ Post.destroy_all
 
 atlanta = City.create(
     name: "Atlanta",
-    photo_url: "https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg"
+    photo_url: "https://www.billboard.com/files/media/atlanta-skyline-billboard-1548.jpg"
 )
 london = City.create(
     name: "London",

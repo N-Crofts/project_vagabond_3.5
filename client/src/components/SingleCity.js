@@ -5,17 +5,18 @@ import styled from 'styled-components'
 
 const StyledBackground = styled.div`
   /* background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg"); */
-  filter: blur(2px);
+  /* filter: blur(2px); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  display: flex;
+  /* background-attachment: fixed; */
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  max-width: 100%;
+  justify-content: center; */
+  /* min-height: 100vh; */
+  height: 450px;
+  /* max-width: 100%; */
 `
 const StyledPost = styled.div`
   background-color: rgba(0,0,0, 0.4);
@@ -32,6 +33,15 @@ const StyledPost = styled.div`
   text-align: center;
   font-size: 4vw;
   color: white;
+`
+
+const Banana = styled.div`
+  padding-left: 5em;
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  width: 50em;
+
+
 `
 
 const StyledNav = styled.nav`
@@ -132,31 +142,28 @@ export default class SingleCity extends Component {
         const postContent = this.state.posts.map((post, i) => {
             // const postNumber = i + 1
             return (
-                // <div key={i}>
+                // <Banana key={i}>
 
-                           <div key={i}>
+                           <Banana key={i}>
                     <Link to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
-                    <div>{post.body}</div>
-                {/* </div> */}
+                    <div id="body">{post.body}</div>
 
        
                       
                     
                     {/* <button onClick={()=>this.handleDelete(post.id)}>delete</button> */}
-                </div>
+                </Banana>
             )
         })
 
 
         return (
-            <div>
+            <Banana>
                 <StyledBackground>
                     <img src={city.photo_url} />
-                    <StyledPost />
                 </StyledBackground>
             <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
-                <StyledLink to=''>Add New Post</StyledLink>
                 <li>{city.name}</li>
                 
                
@@ -182,7 +189,7 @@ export default class SingleCity extends Component {
                 <input type='submit' value='add new post'/>
             </form>
             
-            </div>
+            </Banana>
         )
     }
 }
