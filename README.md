@@ -15,10 +15,12 @@ Project Vagabond is a travel app that allows users to leave "notes" on a list of
 * Styled-Components
 * Deployed to Heroku
 
-## Live Site and Trello
+## Live Site, Trello and Pitch Deck
 [Trello](https://trello.com/b/YM7dUdtV/project35)
 
 [Live Site](http://travel-train.herokuapp.com/)
+
+[Pitch Deck](https://www.haikudeck.com/p/288355af3b/project-vagabond)
 
 ## Wireframes and ERD
 
