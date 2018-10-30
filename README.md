@@ -1,24 +1,35 @@
-# README
+# Project 3.5 - Project Vagabond 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Contributors:
+* [Alan Buckle](https://github.com/apbuckle)
+* [Qing Chen](https://github.com/qchen3301)
+* [Michael "Gouda" Clark](https://github.com/atlgouda)
+* [Nicolas Croft](https://github.com/N-Crofts)
 
-Things you may want to cover:
+## Description
+Project Vagabond is a travel app that allows users to leave "notes" on a list of cities. Users have the ability to create new notes, delete or edit their notes, and view notes other users have left for a particular city. This project was executed under the Agile development method in sprints, and coded by the contributors through git branches.
 
-* Ruby version
+## Built With
+* Ruby On Rails
+* React.js
+* Styled-Components
+* Deployed to Heroku
 
-* System dependencies
+## Live Site, Trello and Pitch Deck
+[Trello](https://trello.com/b/YM7dUdtV/project35)
 
-* Configuration
+[Live Site](http://travel-train.herokuapp.com/)
 
-* Database creation
+[Pitch Deck](https://www.haikudeck.com/p/288355af3b/project-vagabond)
 
-* Database initialization
+## Wireframes and ERD
 
-* How to run the test suite
+![Wireframes](https://raw.githubusercontent.com/N-Crofts/project_vagabond_3.5/master/wireframes.jpg)
 
-* Services (job queues, cache servers, search engines, etc.)
+![ERD](https://raw.githubusercontent.com/N-Crofts/project_vagabond_3.5/master/erd.JPG)
 
-* Deployment instructions
-
-* ...
+## Iceboxed Features
+* User Model
+* Validation on users
+* Truncated body on posts
+* More Navbar functionality

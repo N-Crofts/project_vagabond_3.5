@@ -3,6 +3,19 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+
+
+const StyledButton = styled.button`
+    display: inline-block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 2.5vw;
+    font-weight: bold;
+    border-right: 1px solid #bbb;
+    
+    cursor: pointer;
+
+`
 const StyledBackground = styled.div`
   /* background-image: url("https://diamondvision.com/wp-content/uploads/Atlanta-Skyline-Photography.jpg"); */
   /* filter: blur(2px); */
@@ -88,6 +101,19 @@ export default class SingleCity extends Component {
         }
     }
 
+    handleChange = (event, i) => {
+        const posts = [...this.state.posts]
+        posts[i][event.target.name]=event.target.value
+        this.setState({posts})
+    }
+
+    handleNew = async () => {
+        // Fetching ID of city through props
+        const cityId = this.props.match.params.id
+        const newPost = await axios.post(`/api/cities/${cityId}/posts`)
+        await this.fetchOneCity()
+    }
+
     async componentDidMount() {
         const cityId = this.props.match.params.id
         const city = await this.fetchOneCity(cityId)
@@ -145,7 +171,7 @@ export default class SingleCity extends Component {
         const postContent = this.state.posts.map((post, i) => {
 
             return (
-                <div id="cityContainer">
+
                 <StyledPost key={i}>
                     <Link id="postLink" to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
                     <div id="body">{post.body}</div>
@@ -153,6 +179,7 @@ export default class SingleCity extends Component {
         
 
                 </div>
+
             )
         })
 
@@ -164,6 +191,7 @@ export default class SingleCity extends Component {
                 </StyledBackground>
 
                 <StyledNav>
+
                     <StyledLink to='/'>VAGABOND</StyledLink>
                     <li>{city.name}</li>
                 </StyledNav>
@@ -190,6 +218,32 @@ export default class SingleCity extends Component {
                     />
                     <input type='submit' value='add new post' />
                 </form>
+
+                <StyledLink to='/'>VAGABOND</StyledLink>
+                <StyledButton to=''>Add New Post</StyledButton>
+                <li>{city.name}</li>
+               
+            </StyledNav>
+                <StyledPost>
+                    {postContent}
+                    <br/>
+                </StyledPost>
+
+            
+           
+
+            <StyledNav>
+                <StyledLink to='/'>VAGABOND</StyledLink>
+                <StyledLink to=''>Add New Post</StyledLink>
+                <li>{city.name}</li>
+               
+            </StyledNav>
+            
+           
+            {postContent}
+
+            
+
             </div>
 
         )
