@@ -14,6 +14,7 @@ class App extends Component {
           <Route exact path='/cities' component={AllCities} />
           <Route exact path='/cities/:id' component={SingleCity} />
           <Route exact path='/cities/:cityId/posts/:id' component={SinglePost} />
+          <Route exact path='/*' component={SingleCity} />
         </Switch>
       </Router>
     )
