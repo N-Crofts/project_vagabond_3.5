@@ -83,11 +83,10 @@ export default class SinglePost extends Component {
       const postId = this.props.match.params.id
       const response = await axios.put(`/api/cities/${cityId}/posts/${postId}`, this.state.post)
       const post = this.state.post
-      // post.push(response.data)
       this.setState({post})
     }
     handleDelete = async (postId) => {
-        const cityId = this.state.city.id
+        const cityId = this.state.post.city_id
         const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
         const filteredPosts = this.state.posts.filter(post => postId !== post.id)
         this.setState({ posts: filteredPosts })
@@ -97,13 +96,7 @@ export default class SinglePost extends Component {
       window.location.replace(`/cities/${cityId}`)
     }
 
-
-
   render() {
-    
-          
-          
-      
     return (
         <StyledPostContainer>
       <StyledPost>
@@ -123,7 +116,7 @@ export default class SinglePost extends Component {
           onChange={this.handleChange}
         />
         <input type='submit' value='Edit Post' onClick={()=>{this.goBack()}}/>
-        {/* <button onClick={()=>this.handleDelete(post.id)}>delete</button> */}
+        <button onClick={()=>{this.handleDelete(this.state.post.id);this.goBack()}}>delete</button>
 
         </form>
       </StyledPost>

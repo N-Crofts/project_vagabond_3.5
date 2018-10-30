@@ -105,13 +105,6 @@ export default class SingleCity extends Component {
         this.setState({posts})
     }
 
-    handleDelete = async (postId) => {
-        const cityId = this.state.city.id
-        const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
-        const filteredPosts = this.state.posts.filter(post => postId !== post.id)
-        this.setState({ posts: filteredPosts })
-    }
-
     handleSubmit = async (event) => {
         event.preventDefault()
         const cityId = this.props.match.params.id
@@ -130,19 +123,10 @@ export default class SingleCity extends Component {
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
-            // const postNumber = i + 1
             return (
-                // <div key={i}>
-
-                           <div key={i}>
+                <div key={i}>
                     <Link to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
                     <div>{post.body}</div>
-                {/* </div> */}
-
-       
-                      
-                    
-                    {/* <button onClick={()=>this.handleDelete(post.id)}>delete</button> */}
                 </div>
             )
         })
