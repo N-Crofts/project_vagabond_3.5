@@ -68,7 +68,11 @@ const StyledLink = styled(Link)`
 export default class SingleCity extends Component {
     state = {
         city: {},
-        posts: []
+        posts: [],
+        newPost: {
+            title: '',
+            body: ''
+        }
     }
 
     async componentDidMount() {
@@ -86,17 +90,60 @@ export default class SingleCity extends Component {
 
     fetchPosts = async (id) => {
         const response = await axios.get(`/api/cities/${id}/posts`)
-        return response.data
+        return response.data.reverse()
+    }
+
+    handleChange = (event) => {
+        const newPost = {...this.state.newPost}
+        newPost[event.target.name] = event.target.value
+        this.setState({newPost})
+    }
+
+    handleUpdateChange = (event, i) => {
+        const posts = [...this.state.posts]
+        posts[i][event.target.name] = event.target.value
+        this.setState({posts})
+    }
+
+    handleDelete = async (postId) => {
+        const cityId = this.state.city.id
+        const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
+        const filteredPosts = this.state.posts.filter(post => postId !== post.id)
+        this.setState({ posts: filteredPosts })
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const cityId = this.props.match.params.id
+        const response = await axios.post(`/api/cities/${cityId}/posts`, this.state.newPost)
+        const posts = [...this.state.posts]
+        posts.push(response.data)
+        this.setState({posts})
+    }
+
+    handleUpdate = async (i) => {
+        const cityId = this.props.match.params.id
+        const updatedPost = this.state.posts[i]
+        await axios.put(`/api/cities/${cityId}/posts/${updatedPost.id}`, updatedPost)
     }
 
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
+            // const postNumber = i + 1
             return (
-                <StyledPost key={i}>
-                    <h1>{post.name}</h1>
-                    <p>{post.body}</p>
-                </StyledPost>
+                // <div key={i}>
+
+                           <div key={i}>
+                    <Link to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
+                    <div>{post.body}</div>
+                {/* </div> */}
+
+       
+                      
+                    
+                    {/* <button onClick={()=>this.handleDelete(post.id)}>delete</button> */}
+                </div>
             )
         })
 
@@ -105,6 +152,7 @@ export default class SingleCity extends Component {
             <div>
                 <StyledBackground>
                     <img src={city.photo_url} />
+                    <StyledPost />
                 </StyledBackground>
             <StyledNav>
                 <StyledLink to='/'>VAGABOND</StyledLink>
@@ -115,7 +163,24 @@ export default class SingleCity extends Component {
             </StyledNav>
             
            
-            {postContent}
+            <div>{postContent}</div>
+            <form onSubmit={this.handleSubmit}>
+                <input 
+                    type='text'
+                    name='title'
+                    placeholder='Enter title of post'
+                    value={this.state.newPost.title}
+                    onChange={this.handleChange}
+                />
+                <input 
+                    type='text'
+                    name='body'
+                    placeholder='Enter body of post'
+                    value={this.state.newPost.body}
+                    onChange={this.handleChange}
+                />
+                <input type='submit' value='add new post'/>
+            </form>
             
             </div>
         )
