@@ -31,9 +31,9 @@ Project Vagabond is a travel app that allows users to leave "notes" on a list of
 
 ## Wireframes and ERD
 
-![Wireframes]
+![Wireframes](https://raw.githubusercontent.com/N-Crofts/project_vagabond_3.5/master/wireframes.jpg)
 
-![ERD]
+![ERD](https://raw.githubusercontent.com/N-Crofts/project_vagabond_3.5/master/erd.JPG)
 
 ## Iceboxed Features
 
