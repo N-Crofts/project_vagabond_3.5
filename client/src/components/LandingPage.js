@@ -44,7 +44,7 @@ const StyledMenu = styled.div`
 `
 
 const StyledStatic = styled.div`
-  background-image: url('https://images.unsplash.com/photo-1523411518-b0e44109a06b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b871ac13c2aa23571b82e7dbec98f991&auto=format&fit=crop&w=1051&q=80');
+  background-image: url('https://graylinegroup.com/wp-content/uploads/2016/03/city-1209105_1280-1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,12 +58,18 @@ const StyledStatic = styled.div`
 const StyledBanner = styled.div`
   font-size: 8vw;
   letter-spacing: 1vw;
-  color: black;
+  color: white;
   font-weight: bold;
   margin: 20px;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 `
 const StyledCityList = styled.div`
   margin: 10px;
+  color: white;
 `
 const StyledCityAdd = styled.div`
   position: relative;
@@ -76,10 +82,15 @@ const StyledCityAdd = styled.div`
 
 const StyledLink = styled(Link)`
 text-decoration: none;
-color: black;
+color: white;
 cursor: pointer;
 font-size: 5.5vw;
 margin: 20px;
+text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 `
 
 

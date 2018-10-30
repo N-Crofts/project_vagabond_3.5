@@ -33,7 +33,7 @@ body,html{
 }
 
 .static {
-  background: #00617F
+  background: rgba(0,97,127,1)
   ;
 }
 
@@ -58,6 +58,7 @@ body,html{
 
 .cityList {
   font-size: 35px;
+  color: white;
 }
 
 .cityAdd {
