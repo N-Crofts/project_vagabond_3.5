@@ -1,7 +1,7 @@
 body,html{
   margin:0;
   padding:0;
-  background-color: lightcyan;
+  background-color: #00617F;
 }
 
 .wrapper {
@@ -33,7 +33,8 @@ body,html{
 }
 
 .static {
-  background: rgb(161, 167, 192);
+  background: #00617F
+  ;
 }
 
 .bg1::after {
