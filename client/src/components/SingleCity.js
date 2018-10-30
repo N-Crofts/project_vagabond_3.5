@@ -9,6 +9,7 @@ const StyledBackground = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
   /* background-attachment: fixed; */
   /* display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@ const StyledBackground = styled.div`
   justify-content: center; */
   /* min-height: 100vh; */
   height: 450px;
+  width: 100%;
   /* max-width: 100%; */
 `
 const StyledPost = styled.div`
@@ -40,6 +42,7 @@ const Banana = styled.div`
   background-color: rgba(0,0,0, 0.4);
   color: white;
   width: 50em;
+  font-size: 1.5vw;
 
 
 `
@@ -104,15 +107,15 @@ export default class SingleCity extends Component {
     }
 
     handleChange = (event) => {
-        const newPost = {...this.state.newPost}
+        const newPost = { ...this.state.newPost }
         newPost[event.target.name] = event.target.value
-        this.setState({newPost})
+        this.setState({ newPost })
     }
 
     handleUpdateChange = (event, i) => {
         const posts = [...this.state.posts]
         posts[i][event.target.name] = event.target.value
-        this.setState({posts})
+        this.setState({ posts })
     }
 
     handleDelete = async (postId) => {
@@ -128,7 +131,7 @@ export default class SingleCity extends Component {
         const response = await axios.post(`/api/cities/${cityId}/posts`, this.state.newPost)
         const posts = [...this.state.posts]
         posts.push(response.data)
-        this.setState({posts})
+        this.setState({ posts })
     }
 
     handleUpdate = async (i) => {
@@ -140,56 +143,50 @@ export default class SingleCity extends Component {
     render() {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
-            // const postNumber = i + 1
+
             return (
-                // <Banana key={i}>
-
-                           <Banana key={i}>
-                    <Link to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
+                <div id="cityContainer">
+                <Banana key={i}>
+                    <Link id="postLink" to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
                     <div id="body">{post.body}</div>
-
-       
-                      
-                    
-                    {/* <button onClick={()=>this.handleDelete(post.id)}>delete</button> */}
                 </Banana>
+                </div>
             )
         })
 
 
         return (
-            <Banana>
+            <div>
                 <StyledBackground>
                     <img src={city.photo_url} />
                 </StyledBackground>
-            <StyledNav>
-                <StyledLink to='/'>VAGABOND</StyledLink>
-                <li>{city.name}</li>
-                
-               
-            </StyledNav>
-            
-           
-            <div>{postContent}</div>
-            <form onSubmit={this.handleSubmit}>
-                <input 
-                    type='text'
-                    name='title'
-                    placeholder='Enter title of post'
-                    value={this.state.newPost.title}
-                    onChange={this.handleChange}
-                />
-                <input 
-                    type='text'
-                    name='body'
-                    placeholder='Enter body of post'
-                    value={this.state.newPost.body}
-                    onChange={this.handleChange}
-                />
-                <input type='submit' value='add new post'/>
-            </form>
-            
-            </Banana>
+
+                <StyledNav>
+                    <StyledLink to='/'>VAGABOND</StyledLink>
+                    <li>{city.name}</li>
+                </StyledNav>
+
+
+                <div>{postContent}</div>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type='text'
+                        name='title'
+                        placeholder='Enter title of post'
+                        value={this.state.newPost.title}
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type='text'
+                        name='body'
+                        placeholder='Enter body of post'
+                        value={this.state.newPost.body}
+                        onChange={this.handleChange}
+                    />
+                    <input type='submit' value='add new post' />
+                </form>
+            </div>
+
         )
     }
 }

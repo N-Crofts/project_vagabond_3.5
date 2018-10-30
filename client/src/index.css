@@ -71,3 +71,11 @@ body,html{
 #body {
   padding-bottom: 50px;
 }
+#postLink {
+  font-size: 30px;
+  color: white;
+}
+#cityContainer {
+  background-color: rgba(0,0,0, 0.4);
+
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import swal from 'sweetalert'
 
 const StyledPostContainer = styled.div`
 display: flex;
@@ -51,8 +52,6 @@ textarea {
   background-color: lightcyan;
 }
 `
-
-
 export default class SinglePost extends Component {
 
     state = {
@@ -83,27 +82,38 @@ export default class SinglePost extends Component {
       const postId = this.props.match.params.id
       const response = await axios.put(`/api/cities/${cityId}/posts/${postId}`, this.state.post)
       const post = this.state.post
-      // post.push(response.data)
       this.setState({post})
     }
     handleDelete = async (postId) => {
-        const cityId = this.state.post.city_id
-        const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
-        const filteredPosts = this.state.posts.filter(post => postId !== post.id)
-        this.setState({ posts: filteredPosts })
+      swal({
+        title: "Delete this post?",
+        text: "Are you sure you want to delete this post?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      })
+        .then((willDelete) => {
+          if(willDelete) {
+            swal("Post Deleted!", {
+              icon: "success"
+            })
+            .then(async ()=> {
+              const cityId = this.state.post.city_id
+              const deleteResponse = await axios.delete(`/api/cities/${cityId}/posts/${postId}`)
+              this.goBack()
+            })
+          } else {
+            swal("Post not deleted")
+          }
+        })
     }
+
     goBack = () => {
       const cityId = this.props.match.params.cityId
       window.location.replace(`/cities/${cityId}`)
     }
 
-
-
   render() {
-    
-          
-          
-      
     return (
         <StyledPostContainer>
       <StyledPost>
@@ -123,8 +133,8 @@ export default class SinglePost extends Component {
           onChange={this.handleChange}
         />
         <input type='submit' value='Edit Post' onClick={()=>{this.goBack()}}/>
-        <button onClick={()=>{this.handleDelete(this.state.post.id);this.goBack()}}>delete</button>
-
+        <button onClick={()=>this.handleDelete(this.state.post.id)}>delete</button>
+        <button onClick={()=>this.goBack()}>Go Back</button>
 
         </form>
       </StyledPost>
