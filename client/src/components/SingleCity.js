@@ -21,7 +21,7 @@ const StyledBackground = styled.div`
   max-width: 100%;
 `
 const StyledPost = styled.div`
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgba(0,0,0, 0.7);
   display: flex;
   justify-content: space-evenly;
   /* position: absolute; */
