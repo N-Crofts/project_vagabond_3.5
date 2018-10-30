@@ -1,24 +1,31 @@
-# README
+#Project 3.5 - Project Vagabond
+Contributors:
+Alan Buckle
+Qing Chen
+Michael "Gouda" Clark
+Nicolas Crofts
+Description
+Project Vagabond is a travel app that allows users to leave "notes" on a list of cities. Users have the ability to create new notes, delete or edit their notes, and view notes other users have left for a particular city. This project was executed under the Agile development method in sprints, and coded by the contributors through git branches.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built With
+Ruby On Rails
+React.js
+Styled-Components
+Deployed to Heroku
+Live Site, Trello and Pitch Deck
+Trello
 
-Things you may want to cover:
+Live Site
 
-* Ruby version
+Pitch Deck
 
-* System dependencies
+Wireframes and ERD
+Wireframes
 
-* Configuration
+ERD
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Iceboxed Features
+User Model
+Validation on users
+Truncated body on posts
+More Navbar functionality
