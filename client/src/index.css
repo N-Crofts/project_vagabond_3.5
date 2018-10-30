@@ -76,6 +76,8 @@ body,html{
   color: white;
 }
 #cityContainer {
-  background-color: rgba(0,0,0, 0.4);
-
+  padding-left: 50vw;
+}
+#inputForm {
+  padding-left: 50vw;
 }

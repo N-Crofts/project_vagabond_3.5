@@ -18,29 +18,29 @@ const StyledBackground = styled.div`
   /* min-height: 100vh; */
   height: 450px;
   width: 100%;
-  /* max-width: 100%; */
+  max-width: 100%;
 `
 const StyledPost = styled.div`
   background-color: rgba(0,0,0, 0.4);
   display: flex;
   justify-content: space-evenly;
-  position: absolute;
+  /* position: absolute; */
   transform: translate(-50%, -50%);
   z-index: 2;
   top: 50%;
   left: 50%;
-  width: 50%;
+  width: 80%;
   padding: 20px;
   flex-wrap: wrap;
   text-align: center;
-  font-size: 4vw;
+  font-size: 1.4vw;
   color: white;
 `
 
 const Banana = styled.div`
   padding-left: 5em;
   background-color: rgba(0,0,0, 0.4);
-  color: white;
+  color: black;
   width: 50em;
   font-size: 1.5vw;
 
@@ -146,10 +146,12 @@ export default class SingleCity extends Component {
 
             return (
                 <div id="cityContainer">
-                <Banana key={i}>
+                <StyledPost key={i}>
                     <Link id="postLink" to={`/cities/${city.id}/posts/${post.id}`} > {post.title}</Link>
                     <div id="body">{post.body}</div>
-                </Banana>
+                </StyledPost>
+        
+
                 </div>
             )
         })
@@ -175,13 +177,16 @@ export default class SingleCity extends Component {
                         placeholder='Enter title of post'
                         value={this.state.newPost.title}
                         onChange={this.handleChange}
+                        required
                     />
-                    <input
+                    <input 
                         type='text'
                         name='body'
-                        placeholder='Enter body of post'
+                        placeholder='Enter body of post (max 2000 char)'
+                        maxLength="2000"
                         value={this.state.newPost.body}
                         onChange={this.handleChange}
+                        required
                     />
                     <input type='submit' value='add new post' />
                 </form>

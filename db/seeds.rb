@@ -16,12 +16,12 @@ atlanta = City.create(
 london = City.create(
     name: "London",
     # photo_url: "https://i1.wp.com/www.montcalmroyallondoncity.co.uk/blog/wp-content/uploads/2017/09/shutterstock_313597526.jpg?fit=1000%2C658&ssl=1"
-    photo_url: "http://www.bellunesinelmondo.it/wp-content/uploads/2017/02/london-2.jpg"
+    photo_url: "https://news.bbcimg.co.uk/news/special/2015/newsspec_12558/media/1920xxjasonhawkes-0056-mr.jpg"
 )
 
 san_francisco = City.create(
     name: "San Francisco",
-    photo_url: "http://paperlief.com/images/golden-gate-bridge-side-view-at-night-wallpaper-1.jpg"
+    photo_url: "https://www.sftravel.com/sites/sftraveldev.prod.acquia-sites.com/files/SanFrancisco_0.jpg"
 )
 post_one = atlanta.posts.create(
     title: "Piedmont Park",
